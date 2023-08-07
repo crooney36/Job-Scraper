@@ -2,6 +2,8 @@ import argparse
 from job_search_scraper.spiders import indeed, linkedin
 
 def main():
+
+    # Parse arguments from command line input and run the appropriate scraper. 
     parser = argparse.ArgumentParser(description='Job search scraper.')
     parser.add_argument('-t', '--title', type=str, required=True,
                         help='Job title to search for.')
@@ -13,10 +15,12 @@ def main():
 
     args = parser.parse_args()
 
+    # Assign arguments to variables. 
     title = args.title
     location = args.location
     site = args.site
 
+    # Run the appropriate scraper.
     if site == 'indeed':
         indeed.scrape(title, location)
     elif site == 'linkedin':
